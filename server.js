@@ -6,7 +6,7 @@ const app = express()
 const PORT = process.env.PORT || 10000
 
 // URL del CSV remoto
-const CSV_URL = 'https://fondmetal.com/FM_FitmentTechData_v01.csv'
+const CSV_URL = 'https://fondmetal.com/ApplicationList.csv'
 
 // Endpoint per convertire CSV in JSON
 app.get('/csv', async (req, res) => {
