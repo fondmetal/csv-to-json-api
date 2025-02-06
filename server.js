@@ -13,6 +13,8 @@ app.get('/csv', async (req, res) => {
   try {
     const response = await axios.get(CSV_URL)
     const json = await csv().fromString(response.data)
+
+    res.setHeader('Content-Type', 'application/json') // Forza il Content-Type
     res.json(json) // Manda la risposta in formato JSON
   } catch (error) {
     console.error('Errore nel recupero del CSV:', error)
@@ -20,8 +22,9 @@ app.get('/csv', async (req, res) => {
   }
 })
 
-// Endpoint root (per evitare il "Not Found")
+// Endpoint root per evitare errori 404
 app.get('/', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain')
   res.send('Server attivo! Usa /csv per ottenere i dati.')
 })
 
